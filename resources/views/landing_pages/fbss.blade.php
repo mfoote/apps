@@ -77,10 +77,10 @@
                                                         alt="Spine Center Logo"></a>
     <nav role="navigation" class="navmenu w-nav-menu">
         <a href="#top" class="navlink scroll w-nav-link">Home</a>
-        <a href="#conditions" class="navlink scroll w-nav-link">Failed Back Surgery</a>
+        <a href="#content" class="navlink scroll w-nav-link">Failed Back Surgery</a>
         <a href="#team" class="navlink scroll w-nav-link">our team</a>
         <a href="#testimonials" class="navlink scroll w-nav-link">testimonials</a>
-        <a href="#contact" class="navlink scroll w-nav-link">Schedule Now</a>
+        <a href="#contact" class="navlink scroll w-nav-link">Schedule Evaluation</a>
     </nav>
     <div class="menu_btn w-nav-button">
         <div class="w-icon-nav-menu"></div>
@@ -94,7 +94,7 @@
         <a href="#content" class="navlink w-nav-link">Failed Back Surgery</a>
         <a href="#team" class="navlink w-nav-link">our team</a>
         <a href="#testimonials" class="navlink w-nav-link">testimonials</a>
-        <a href="#contact" class="navlink w-nav-link">Schedule Now</a>
+        <a href="#contact" class="navlink w-nav-link">Schedule Evaluation</a>
     </nav>
     <div class="nemu_btn w-nav-button">
         <div class="w-icon-nav-menu"></div>
@@ -109,7 +109,7 @@
         <a href="#contact" class="main_button w-inline-block"><img src="/image/landing_pages/fbss/appointment-icon.jpg"
                                                                    loading="lazy" alt="Icon of Calendar"
                                                                    class="main_btn_icon">
-            <div>schedule now</div>
+            <div>Schedule Evaluation</div>
         </a>
         <a href="tel:4043515812" class="main_button w-inline-block"><img src="/image/landing_pages/fbss/phone-icon.jpg"
                                                                          loading="lazy" alt="Icon of Phone"
@@ -123,290 +123,24 @@
 </div>
 <div class="scroll_btn_wrapper">
     <div class="scroll_div">
-        <a href="#content" class="scroll_btn w-inline-block"><img src="/image/landing_pages/fbss/arrow.png"
-                                                                  data-ix="arrow" alt="arrow pointing down"
-                                                                  class="scroll_arrow">
+        <a href="#content" class="scroll_btn w-inline-block">
+            <img src="/image/landing_pages/fbss/arrow.png"
+                 data-ix="arrow" alt="arrow pointing down"
+                 class="scroll_arrow">
             <div>learn more</div>
         </a>
     </div>
 </div>
 <div id="top" class="hero_section" data-ix="navbar-scrioll"></div>
-<div id="self-test" class="content_section" style="background-color: #dec463; background-image: unset;">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <h2 style="text-align: center;">Back Pain Self-Test</h2>
-                <form action="">
-{{--Start Neck--}}
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <legend class="text-black-50">Do you have neck pain?</legend>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input ml-5" type="radio" name="neck_pain" id="neck_pain_1"
-                                       value="Yes">
-                                <label class="form-check-label" style="font-weight: normal !important; font-size: 80%" for="neck_pain_1">Yes</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="neck_pain" id="neck_pain_2"
-                                       value="No">
-                                <label class="form-check-label" style="font-weight: normal !important; font-size: 80%" for="neck_pain_2">No</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <h3 class="col-form-label">Please rate your neck pain from 1-10</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            @php
-                                $count=1
-                            @endphp
-                            @while($count < 11)
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="neck_pain_level"
-                                           id="neck_pain_level_{{$count}}" value="{{$count}}">
-                                    <label class="form-check-label" style="font-weight: normal !important; font-size: 80%" for="neck_pain_level_{{$count}}">{{$count}}</label>
-                                </div>
-                                @php
-                                    $count++
-                                @endphp
-                            @endwhile
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <h3 class="col-form-label">Are you also experiencing arm pain?</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="arm_pain" id="arm_pain_1"
-                                       value="Yes">
-                                <label class="form-check-label" style="font-weight: normal !important; font-size: 80%" for="arm_pain_1">Yes</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="arm_pain" id="arm_pain_2"
-                                       value="No">
-                                <label class="form-check-label" style="font-weight: normal !important; font-size: 80%" for="arm_pain_2">No</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <h3 class="col-form-label">Please rate your arm pain from 1-10</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            @php
-                                $count=1
-                            @endphp
-                            @while($count < 11)
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="arm_pain_level"
-                                           id="arm_pain_level_{{$count}}" value="{{$count}}">
-                                    <label class="form-check-label" style="font-weight: normal !important; font-size: 80%" for="arm_pain_level_{{$count}}">{{$count}}</label>
-                                </div>
-                                @php
-                                    $count++
-                                @endphp
-                            @endwhile
-                        </div>
-                    </div>
-                    {{--End Neck--}}
-                    {{--Start Back--}}
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <legend class="text-black-50 pt-3">Do you have back pain?</legend>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="back_pain" id="back_pain_1"
-                                       value="Yes">
-                                <label class="form-check-label" style="font-weight: normal !important; font-size: 80%" for="back_pain_1">Yes</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="back_pain" id="back_pain_2"
-                                       value="No">
-                                <label class="form-check-label" style="font-weight: normal !important; font-size: 80%" for="back_pain_2">No</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <h3 class="col-form-label">Please rate your back pain from 1-10</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            @php
-                                $count=1
-                            @endphp
-                            @while($count < 11)
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="back_pain_level"
-                                           id="back_pain_level_{{$count}}" value="{{$count}}">
-                                    <label class="form-check-label" style="font-weight: normal !important; font-size: 80%" for="back_pain_level_{{$count}}">{{$count}}</label>
-                                </div>
-                                @php
-                                    $count++
-                                @endphp
-                            @endwhile
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <h3 class="col-form-label">Are you also experiencing leg pain?</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="leg_pain" id="leg_pain_1"
-                                       value="Yes">
-                                <label class="form-check-label" style="font-weight: normal !important; font-size: 80%" for="leg_pain_1">Yes</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="leg_pain" id="leg_pain_2"
-                                       value="No">
-                                <label class="form-check-label" style="font-weight: normal !important; font-size: 80%" for="leg_pain_2">No</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <h3 class="col-form-label">Please rate your leg pain from 1-10</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            @php
-                                $count=1
-                            @endphp
-                            @while($count < 11)
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="leg_pain_level"
-                                           id="leg_pain_level_{{$count}}" value="{{$count}}">
-                                    <label class="form-check-label" style="font-weight: normal !important; font-size: 80%" for="leg_pain_level_{{$count}}">{{$count}}</label>
-                                </div>
-                                @php
-                                    $count++
-                                @endphp
-                            @endwhile
-                        </div>
-                    </div>
-                    {{--End Back--}}
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <legend class="text-black-50 pt-3">Have you had any of the following imaging done?</legend>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            @php
-                                $arr = ['x_ray' => 'X-Ray', 'mri' => 'MRI', 'ct_scan' => 'CT Scan', 'emg_ncv' => 'EMG/NCV', 'none' => 'None']
-                            @endphp
-                            @foreach($arr as $k => $v)
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="imaging_{{$k}}"
-                                           id="imaging_{{$k}}" value="{{$v}}">
-                                    <label class="form-check-label" style="font-weight: normal !important; font-size: 80%" for="imaging_{{$k}}">{{$v}}</label>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <legend class="text-black-50 pt-3" >Have you had any of the following treatment?</legend>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            @php
-                                $arr = ['treatments_chiropractic' => 'Chiropractic', 'treatments_therapy' => 'Physical, Massage or Aqua Therapy', 'treatments_opm' => 'Oral Pain Management', 'treatments_esi' => 'Epidural Steroid Injection', 'treatments_mbb' => 'Medical Branch Blocks', 'treatments_ra' => 'Radiofrequency Ablation', 'treatments_id' => 'Intradiscal Decompression']
-                            @endphp
-                            @foreach($arr as $ks => $vs)
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="treatments_{{$ks}}"
-                                           id="treatments_{{$ks}}" value="{{$vs}}">
-                                    <label class="form-check-label" style="font-weight: normal !important; font-size: 80%" for="treatments_{{$ks}}">{{$vs}}</label>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <legend class="text-black-50 pt-3">What email should we send the results to?</legend>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col col-md-5 col-lg-4 offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <input type="text" class="form-control form-control-sm">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <legend class="text-black-50 pt-3">Would you be interested in discussing spine treatment options with one of our specialists?</legend>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input ml-5" type="radio" name="contact" id="contact_1"
-                                       value="Yes">
-                                <label class="form-check-label" style="font-weight: normal !important; font-size: 80%" for="contact_1">Yes</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="contact" id="contact_2"
-                                       value="No">
-                                <label class="form-check-label" style="font-weight: normal !important; font-size: 80%" for="contact_2">No</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <h3 class="col-form-label">What phone number can we call/text you at?</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col col-md-5 col-lg-4 offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <input type="text" name="phone" class="phone form-control form-control-sm">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <h3 class="col-form-label">First Name</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col col-md-5 col-lg-4 offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <input type="text" name="first_name" class="form-control form-control-sm">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <h3 class="col-form-label">Last Name</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col col-md-5 col-lg-4 offset-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <input type="text" name="last_name" class="form-control form-control-sm">
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+{{--<div id="self-test" class="content_section" style="background-color: #dec463; background-image: unset;">--}}
+{{--    <div class="container">--}}
+{{--        <div class="row">--}}
+{{--            <div class="col">--}}
+{{--                <h2 style="text-align: center;">Schedule an Evaluation</h2>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}
 <div id="content" class="content_section">
     <div class="wrapper_div">
         <h3 class="section_headline">Failed Back Surgery</h3>
@@ -578,8 +312,28 @@
             </div>
         </div>
         <div class="contact_wrapper">
-            <h3 class="section_headline left">Schedule Now</h3>
+            <h3 class="section_headline left">Schedule Evaluation</h3>
             <div class="w-form">
+                <form>
+                    <div class="form-group">
+                        <label for="first_name" class="form-text text-sca">First name</label>
+                        <input type="text" id="first_name" name="first_name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="last_name" class="form-text text-sca">Last name</label>
+                        <input type="text" id="last_name" name="last_name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-text text-sca">Email</label>
+                        <input type="text" id="email" name="email" class="form-control">
+                        <small id="emailHelp" class="form-text text-info">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="form-text text-sca">Phone Number</label>
+                        <input type="text" id="phone_number" name="phone_number" class="form-control phone">
+                    </div>
+                    <button type="submit" class="btn btn-sca mt-2">Submit</button>
+                </form>
             </div>
         </div>
     </div>
@@ -595,6 +349,12 @@
         type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
         crossorigin="anonymous"></script>
 <script src="/js/landing.js" type="text/javascript"></script>
+<script src="/js/jquery.mask.js" type="text/javascript"></script>
+<script>
+    jQuery(function () {
+        jQuery('.phone').mask('(000) 000-0000', {placeholder: "(000) 000-0000"});
+    })
+</script>
 <!-- [if lte IE 9]>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
 </body>

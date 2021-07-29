@@ -1049,3 +1049,13 @@ li {
   }
 }
 
+.text-sca{
+    color:#dec463 !important;
+    font-weight: bold !important;
+}
+.btn-sca {
+    color: #000;
+    background-color: #dec463;
+    border-color: #dec463;
+}
+
