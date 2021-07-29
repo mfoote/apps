@@ -311,7 +311,7 @@
                     to 4:00 PM<br>Sat: 9:00 AM to 5:00 PM<br>Sunday: Closed</p>
             </div>
         </div>
-        <div class="contact_wrapper">
+        <div id="contact" class="contact_wrapper">
             <h3 class="section_headline left">Schedule Evaluation</h3>
             <div class="w-form">
                 <form>
