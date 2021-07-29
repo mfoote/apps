@@ -279,7 +279,7 @@
         </div>
     </div>
 </div>
-<div id="contact" class="contact_section">
+<div class="contact_section">
     <div class="wrapper_div contact">
         <div class="locations_wrapper">
             <h3 class="section_headline left">our locations</h3>
