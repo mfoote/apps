@@ -313,46 +313,75 @@
         </div>
         <div id="contact" class="contact_wrapper">
             <h3 class="section_headline left">Schedule Evaluation</h3>
-            <div class="w-form">
-                <form>
+            <div class="w-form d-none">
+                <form class="apps_form" method="post" action="/form">
+                    {{csrf_field()}}
                     <div class="form-group">
-                        <label for="first_name" class="form-text text-sca">First name</label>
-                        <input type="text" id="first_name" name="first_name" class="form-control">
+                        <label for="first_name" class="form-text text-sca">* First name</label>
+                        <input type="text" id="first_name" name="first_name" class="form-control" autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <label for="last_name" class="form-text text-sca">Last name</label>
-                        <input type="text" id="last_name" name="last_name" class="form-control">
+                        <label for="last_name" class="form-text text-sca">* Last name</label>
+                        <input type="text" id="last_name" name="last_name" class="form-control" autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <label for="email" class="form-text text-sca">Email</label>
-                        <input type="text" id="email" name="email" class="form-control">
-                        <small id="emailHelp" class="form-text text-info">We'll never share your email with anyone else.</small>
+                        <label for="email" class="form-text text-sca">** Email</label>
+                        <input type="text" id="email" name="email" class="form-control" autocomplete="off">
+                        <small class="form-text text-info">We'll never share your email with anyone else.</small>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="form-text text-sca">Phone Number</label>
-                        <input type="text" id="phone_number" name="phone_number" class="form-control phone">
+                        <label for="phone_number" class="form-text text-sca">** Phone Number</label>
+                        <input type="text" id="phone_number" name="phone_number" class="form-control phone"
+                               autocomplete="off">
                     </div>
-                    <button type="submit" class="btn btn-sca mt-2">Submit</button>
+                    <div class="form-group">
+                        <button type="submit" id="submit" class="btn btn-sca mt-3">Submit</button>
+                    </div>
+                    <small class="form-text text-danger">We do not accept medicare or medicaid.</small>
+                    <br>
+                    <small class="form-text text-info">* Required, ** One Required</small>
+                    <input type="hidden" name="session_id" value="{{Session::getId()}}">
+                    <input type="hidden" name="ip_address" value="{{request()->getClientIp()}}">
+                    <input type="hidden" name="tracking_meta" value="">
                 </form>
             </div>
         </div>
     </div>
     <div class="footer_wrapper">
-        <a href="#top" class="logo_footer w-inline-block"><img src="/image/landing_pages/fbss/logo_original.jpg"
-                                                               loading="lazy" alt="Spine Center Logo"></a>
-        <p class="footer_text">©2020 All Rights Reserved.<br>Medical Website designed and maintained by Glacial
-            Multimedia, Inc. <br><a href="https://spinecenteratlanta.com/privacy-policy/" target="_blank">Privacy
+        <a href="#top" class="logo_footer w-inline-block">
+            <img src="/image/landing_pages/fbss/logo_original.jpg"
+                 loading="lazy" alt="Spine Center Logo">
+        </a>
+        <p class="footer_text">©2020 All Rights Reserved.<br>Medical Website designed and maintained by NewGen Marketing
+            <br><a href="https://spinecenteratlanta.com/privacy-policy/" target="_blank">Privacy
                 Policy</a></p>
     </div>
 </div>
 <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5f873f3c534e987e04129aff"
         type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
         crossorigin="anonymous"></script>
-<script src="/js/landing.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"
+        integrity="sha512-Meww2sXqNHxI1+5Dyh/9KAtvI9RZSA4c1K2k5iL02oiPO/RH3Q30L3M1albtqMg50u4gRTYdV4EXOQqXEI336A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="/js/jquery.mask.js" type="text/javascript"></script>
+<script src="/js/landing.js" type="text/javascript"></script>
 <script>
     jQuery(function () {
-        jQuery('.phone').mask('(000) 000-0000', {placeholder: "(000) 000-0000"});
+        doUriCookie('{!! json_encode(request()->all()) !!}');
+        jQuery('.apps_form input[name="tracking_meta"]').val(Cookies.get('apps_uri'));
+        jQuery('.phone').mask('000-000-0000', {placeholder: "000-000-0000"});
+        jQuery('#submit').prop('disabled', true).addClass('disabled');
+        jQuery('.w-form').removeClass('d-none');
+        jQuery('.apps_form input').on('keyup', function () {
+            var email = jQuery('.apps_form input[name="email"]').val();
+            var phone = jQuery('.apps_form input[name="phone_number"]').val()
+            jQuery('#submit').prop('disabled', true).addClass('disabled');
+            if (jQuery('.apps_form input[name="first_name"]').val() !== "" && jQuery('.apps_form input[name="last_name"]').val() !== "" && (evalEmail(email)) || evalPhone(phone)) {
+                jQuery('#submit').prop('disabled', false).removeClass('disabled');
+            } else {
+                jQuery('#submit').prop('disabled', true).addClass('disabled');
+            }
+        });
     })
 </script>
 <!-- [if lte IE 9]>

@@ -21,6 +21,8 @@ Route::get('/landing/fbss', function () {
     return view('landing_pages.fbss');
 });
 
+Route::resource('form', \App\Http\Controllers\FormController::class);
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

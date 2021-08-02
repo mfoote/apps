@@ -1058,4 +1058,7 @@ li {
     background-color: #dec463;
     border-color: #dec463;
 }
+.btn-sca.disabled {
+    cursor: not-allowed !important;
+}
 
