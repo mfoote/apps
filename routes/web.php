@@ -26,3 +26,5 @@ Route::resource('form', \App\Http\Controllers\FormController::class);
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/web_forms', [\App\Http\Controllers\WebFormController::class, 'index'])->name('web_forms');

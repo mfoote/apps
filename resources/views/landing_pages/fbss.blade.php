@@ -6,9 +6,9 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="/css/landing_pages/normalize.css" rel="stylesheet" type="text/css">
-    <link href="/css/landing_pages/components.css" rel="stylesheet" type="text/css">
-    <link href="/css/landing_pages/spine-center-atlanta-lp.css" rel="stylesheet" type="text/css">
+    <link href="https://apps.spinecenteratlanta.com/css/landing_pages/normalize.css" rel="stylesheet" type="text/css">
+    <link href="https://apps.spinecenteratlanta.com/css/landing_pages/components.css" rel="stylesheet" type="text/css">
+    <link href="https://apps.spinecenteratlanta.com/css/landing_pages/spine-center-atlanta-lp.css" rel="stylesheet" type="text/css">
     <style>@media (min-width: 992px) {
             html.w-mod-js:not(.w-mod-ix) [data-w-id="dfe7ae59-034e-5ada-74f7-fb8ad91bf91e"] {
                 opacity: 0;
@@ -37,7 +37,8 @@
             html.w-mod-js:not(.w-mod-ix) [data-w-id="2fcd79c9-9431-2d33-6da9-fa5e253dab1b"] {
                 opacity: 0;
             }
-        }</style>
+        }
+    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
     <script
         type="text/javascript">WebFont.load({google: {families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic", "Oswald:200,300,400,500,600,700"]}});</script>
@@ -48,8 +49,9 @@
             var n = c.documentElement, t = " w-mod-";
             n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
         }(window, document);</script>
-    <link href="/image/landing_pages/fbss/favicon.png" rel="shortcut icon" type="image/x-icon">
-    <link href="/image/landing_pages/fbss/webclip.jpg" rel="apple-touch-icon">
+    <link href="https://apps.spinecenteratlanta.com/image/landing_pages/fbss/favicon.png" rel="shortcut icon"
+          type="image/x-icon">
+    <link href="https://apps.spinecenteratlanta.com/image/landing_pages/fbss/webclip.jpg" rel="apple-touch-icon">
     <!-- Global site tag (gtag.js) - Google Ads: 882104283 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-882104283"></script>
     <script>
@@ -68,13 +70,13 @@
             'phone_conversion_number': '404-351-5812'
         });
     </script>
-
 </head>
 <body>
 <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="navbar_scroll w-nav"
      data-ix="navbar-scroll-sero">
-    <a href="#top" class="logo scroll w-nav-brand"><img src="/image/landing_pages/fbss/logo_original.jpg" loading="lazy"
-                                                        alt="Spine Center Logo"></a>
+    <a href="#top" class="logo scroll w-nav-brand"><img
+            src="https://apps.spinecenteratlanta.com/image/landing_pages/fbss/logo_original.jpg" loading="lazy"
+            alt="Spine Center Logo"></a>
     <nav role="navigation" class="navmenu w-nav-menu">
         <a href="#top" class="navlink scroll w-nav-link">Home</a>
         <a href="#content" class="navlink scroll w-nav-link">Failed Back Surgery</a>
@@ -87,8 +89,9 @@
     </div>
 </div>
 <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="navbar w-nav">
-    <a href="#top" class="logo w-nav-brand"><img src="/image/landing_pages/fbss/logo_original.jpg"
-                                                 alt="Spine Center Logo"></a>
+    <a href="#top" class="logo w-nav-brand"><img
+            src="https://apps.spinecenteratlanta.com/image/landing_pages/fbss/logo_original.jpg"
+            alt="Spine Center Logo"></a>
     <nav role="navigation" class="navmenu w-nav-menu">
         <a href="#top" class="navlink w-nav-link">Home</a>
         <a href="#content" class="navlink w-nav-link">Failed Back Surgery</a>
@@ -106,14 +109,16 @@
     <h2 class="main_headline2" data-ix="tagline-move-3">Contact us today for an appointment with one of our top
         physicians. We're waiting to help you get the relief you deserve.</h2>
     <div class="main_buttons_wrapper" data-ix="tagline-move-4">
-        <a href="#contact" class="main_button w-inline-block"><img src="/image/landing_pages/fbss/appointment-icon.jpg"
-                                                                   loading="lazy" alt="Icon of Calendar"
-                                                                   class="main_btn_icon">
+        <a href="#contact" class="main_button w-inline-block"><img
+                src="https://apps.spinecenteratlanta.com/image/landing_pages/fbss/appointment-icon.jpg"
+                loading="lazy" alt="Icon of Calendar"
+                class="main_btn_icon">
             <div>Schedule Evaluation</div>
         </a>
-        <a href="tel:4043515812" class="main_button w-inline-block"><img src="/image/landing_pages/fbss/phone-icon.jpg"
-                                                                         loading="lazy" alt="Icon of Phone"
-                                                                         class="main_btn_icon">
+        <a href="tel:4043515812" class="main_button w-inline-block"><img
+                src="https://apps.spinecenteratlanta.com/image/landing_pages/fbss/phone-icon.jpg"
+                loading="lazy" alt="Icon of Phone"
+                class="main_btn_icon">
             <div class="btn_wrapper">
                 <div class="main_btn_small_text">click to call</div>
                 <div>404-351-5812</div>
@@ -124,7 +129,7 @@
 <div class="scroll_btn_wrapper">
     <div class="scroll_div">
         <a href="#content" class="scroll_btn w-inline-block">
-            <img src="/image/landing_pages/fbss/arrow.png"
+            <img src="https://apps.spinecenteratlanta.com/image/landing_pages/fbss/arrow.png"
                  data-ix="arrow" alt="arrow pointing down"
                  class="scroll_arrow">
             <div>learn more</div>
@@ -157,16 +162,16 @@
                     expert review your case and see if there are solutions that can be used to treat it.</p>
             </div>
             <div data-w-id="301566f7-cb65-1619-92df-798872ece61f" class="img_div"><img
-                    src="/image/landing_pages/fbss/callout-img1.jpg" loading="lazy"
+                    src="https://apps.spinecenteratlanta.com/image/landing_pages/fbss/callout-img1.jpg" loading="lazy"
                     sizes="(max-width: 991px) 90vw, (max-width: 3157px) 38vw, 1200px"
-                    srcset="/image/landing_pages/fbss/callout-img1-p-500.jpeg 500w, /image/landing_pages/fbss/callout-img1.jpg 1200w"
+                    srcset="https://apps.spinecenteratlanta.com/image/landing_pages/fbss/callout-img1-p-500.jpeg 500w, https://apps.spinecenteratlanta.com/image/landing_pages/fbss/callout-img1.jpg 1200w"
                     alt="Woman holding back of neck in pain"></div>
         </div>
         <div class="callout_wrapper">
             <div data-w-id="e98af233-1eca-3dd0-cc9e-2fbdca405ec8" class="img_div"><img
-                    src="/image/landing_pages/fbss/callout-img2.jpg" loading="lazy"
+                    src="https://apps.spinecenteratlanta.com/image/landing_pages/fbss/callout-img2.jpg" loading="lazy"
                     sizes="(max-width: 991px) 90vw, (max-width: 3157px) 38vw, 1200px"
-                    srcset="/image/landing_pages/fbss/callout-img2-p-1080.jpeg 1080w, /image/landing_pages/fbss/callout-img2.jpg 1200w"
+                    srcset="https://apps.spinecenteratlanta.com/image/landing_pages/fbss/callout-img2-p-1080.jpeg 1080w, https://apps.spinecenteratlanta.com/image/landing_pages/fbss/callout-img2.jpg 1200w"
                     alt="man bent over with obvious back pain"></div>
             <div data-w-id="e98af233-1eca-3dd0-cc9e-2fbdca405ec3" class="text_div margin">
                 <!--<div class="square_div"></div>-->
@@ -200,9 +205,9 @@
                     States. For more information, please call Spine Center Atlanta today at 404-351-5812.</p>
             </div>
             <div data-w-id="71dd77c1-4296-00aa-745f-97c605714ab3" class="img_div"><img
-                    src="/image/landing_pages/fbss/callout-img3.jpg" loading="lazy"
+                    src="https://apps.spinecenteratlanta.com/image/landing_pages/fbss/callout-img3.jpg" loading="lazy"
                     sizes="(max-width: 991px) 90vw, (max-width: 3157px) 38vw, 1200px"
-                    srcset="/image/landing_pages/fbss/callout-img3-p-1080.jpeg 1080w, /image/landing_pages/fbss/callout-img3.jpg 1200w"
+                    srcset="https://apps.spinecenteratlanta.com/image/landing_pages/fbss/callout-img3-p-1080.jpeg 1080w, https://apps.spinecenteratlanta.com/image/landing_pages/fbss/callout-img3.jpg 1200w"
                     alt="Doctor touching Spine model"></div>
         </div>
     </div>
@@ -216,9 +221,10 @@
                 back care. Thorough patient education, treatment options, and non and surgical rehabilitation, we
                 provide patients with an accurate diagnosis, comprehensive care, and exceptional customer service.</p>
         </div>
-        <div class="team_photo_div"><img src="/image/landing_pages/fbss/team.png" loading="lazy"
+        <div class="team_photo_div"><img src="https://apps.spinecenteratlanta.com/image/landing_pages/fbss/team.png"
+                                         loading="lazy"
                                          sizes="(max-width: 479px) 90vw, (max-width: 767px) 63vw, (max-width: 991px) 27vw, 24vw"
-                                         srcset="/image/landing_pages/fbss/team-p-500.png 500w, /image/landing_pages/fbss/team.png 745w"
+                                         srcset="https://apps.spinecenteratlanta.com/image/landing_pages/fbss/team-p-500.png 500w, https://apps.spinecenteratlanta.com/image/landing_pages/fbss/team.png 745w"
                                          alt="Picture of our two doctors"></div>
     </div>
 </div>
@@ -301,7 +307,8 @@
                         Drive, Suite 205<br>Forest Park, Georgia 30297</p>
                 </div>
                 <a href="tel:4043515812" class="phone_btn footer w-inline-block"><img
-                        src="/image/landing_pages/fbss/phone-icon_1phone-icon.png" loading="lazy" alt="Icon of phone"
+                        src="https://apps.spinecenteratlanta.com/image/landing_pages/fbss/phone-icon_1phone-icon.png"
+                        loading="lazy" alt="Icon of phone"
                         class="phone_icon footer">
                     <div>404-351-5812</div>
                 </a>
@@ -349,7 +356,7 @@
     </div>
     <div class="footer_wrapper">
         <a href="#top" class="logo_footer w-inline-block">
-            <img src="/image/landing_pages/fbss/logo_original.jpg"
+            <img src="https://apps.spinecenteratlanta.com/image/landing_pages/fbss/logo_original.jpg"
                  loading="lazy" alt="Spine Center Logo">
         </a>
         <p class="footer_text">©2020 All Rights Reserved.<br>Medical Website designed and maintained by NewGen Marketing
@@ -363,8 +370,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"
         integrity="sha512-Meww2sXqNHxI1+5Dyh/9KAtvI9RZSA4c1K2k5iL02oiPO/RH3Q30L3M1albtqMg50u4gRTYdV4EXOQqXEI336A=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="/js/jquery.mask.js" type="text/javascript"></script>
-<script src="/js/landing.js" type="text/javascript"></script>
+<script src="https://apps.spinecenteratlanta.com/js/jquery.mask.js" type="text/javascript"></script>
+<script src="https://apps.spinecenteratlanta.com/js/landing.js" type="text/javascript"></script>
 <script>
     jQuery(function () {
         doUriCookie('{!! json_encode(request()->all()) !!}');
