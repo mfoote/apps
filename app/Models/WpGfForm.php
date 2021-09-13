@@ -9,7 +9,7 @@ class WpGfForm extends Model
 {
     use HasFactory;
     protected $table = 'wp_gf_form';
-    protected $connection = 'remote';
+    protected $connection = 'sca';
 
     public function form_meta(){
         return $this->hasOne(WpGfFormMeta::class, 'form_id', 'id');

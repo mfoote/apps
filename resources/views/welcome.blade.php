@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noindex, nofollow">
-    <title>Apps - SpineCenterAtlanta</title>
+
+    <title>SCA Lead Manager</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -384,6 +384,12 @@
                 color: #cbd5e0;
                 color: rgba(203, 213, 224, var(--text-opacity))
             }
+
+            .dark\:text-gray-500 {
+                --tw-text-opacity: 1;
+                color: #6b7280;
+                color: rgba(107, 114, 128, var(--tw-text-opacity))
+            }
         }
     </style>
 
@@ -399,12 +405,12 @@
     @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             @auth
-                <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
+                <a href="{{ url('/launch') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Launch Pad</a>
             @else
-                <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
+                <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
                 @endif
             @endauth
         </div>
@@ -412,9 +418,10 @@
 
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
         <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-            <img src="/image/logo-only-gold.png" width="200px" alt="SpineCenterAtlanta Apps">
+            <img src="/image/logo-only-gold.png" width="200" alt="Logo">
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>

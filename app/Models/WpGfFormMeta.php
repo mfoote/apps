@@ -9,7 +9,7 @@ class WpGfFormMeta extends Model
 {
     use HasFactory;
     protected $table = 'wp_gf_form_meta';
-    protected $connection = 'remote';
+    protected $connection = 'sca';
     protected $casts  = [
         'display_meta' => 'array'
     ];

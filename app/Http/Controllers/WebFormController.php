@@ -5,24 +5,35 @@ namespace App\Http\Controllers;
 use App\Models\WpGfEntry;
 use App\Models\WpGfForm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WebFormController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index(Request $request)
     {
         $query = WpGfForm::query();
         $query->where('is_active', 1);
         $query->with('form_entries', function ($query) {
-            $query->with('form_entry_meta');
-        });
-        $query->whereHas('form_entries', function ($query) {
-            $query->whereNull('is_fulfilled')->whereNotIn('status', ['trash'])->orderBy('date_created');
+            $query->whereNull('is_fulfilled')->whereNotIn('status', ['trash'])->with('form_entry_meta');
         });
         $query->with('form_meta', function ($query) {
             $query->select('form_id', 'display_meta');
         });
         $forms = $query->get();
-        $records = [];
         $metaMap = [];
         foreach ($forms as $key => $form) {
             foreach ($form['form_meta']['display_meta']['fields'] as $key => $val) {
@@ -54,6 +65,7 @@ class WebFormController extends Controller
             foreach ($form->form_entries as $k2 => $entry) {
                 $entries[$eKey] = [
                     'id' => $entry->id,
+                    'status' => $entry->status,
                     'site' => 'spinecenteratlanta.com',
                     'form_id' => $forms[$key]['id'],
                     'form_name' => $forms[$key]['title']
@@ -66,7 +78,17 @@ class WebFormController extends Controller
                 $eKey++;
             }
         }
-        return view('web_forms.index', compact('entries'));
+        return view('app.web_forms.index', compact('entries'));
+    }
+
+    public function trash(Request $request)
+    {
+        $arr = ['is_fulfilled' => '2', 'status' => 'trash', 'transaction_id' => Auth::user()->id];
+        $entry = WpGfEntry::find($request->input('id'));
+        if (null !== $entry && $entry->is_fulfilled !== 'trash') {
+            $entry->update($arr);
+        }
+        return redirect()->back();
     }
 
     protected function columnNaming($val)
@@ -97,7 +119,7 @@ class WebFormController extends Controller
             case 'last_name':
                 return ucwords(strtolower($val));
             //case 'phone_number':
-                //return preg_replace('/[^0-9]/', '', $val);
+            //return preg_replace('/[^0-9]/', '', $val);
             case 'email_address':
                 return (filter_var($val, FILTER_VALIDATE_EMAIL)) ? strtolower($val) : null;
             case 'last_name':

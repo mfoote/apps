@@ -17,14 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/landing/fbss', function () {
-    return view('landing_pages.fbss');
-});
+Auth::routes();
 
-Route::resource('form', \App\Http\Controllers\FormController::class);
+Route::get('/launch', [App\Http\Controllers\HomeController::class, 'index'])->name('launch');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('/web_forms', [App\Http\Controllers\WebFormController::class, 'index'])->name('web_forms');
+Route::post('/web_forms/trash', [App\Http\Controllers\WebFormController::class, 'trash'])->name('web_forms.trash');
+Route::post('/web_forms/convert', [App\Http\Controllers\WebFormController::class, 'convert'])->name('web_forms.convert');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/web_forms', [\App\Http\Controllers\WebFormController::class, 'index'])->name('web_forms');
+Route::get('/web_calls', [App\Http\Controllers\WebCallController::class, 'index'])->name('web_calls');
+Route::post('/web_calls/convert', [App\Http\Controllers\WebCallController::class, 'convert'])->name('web_calls.convert');
+
+Route::get('/reports', [App\Http\Controllers\ReportController::class, 'index'])->name('reports');
+
+Route::get('/contacts', [App\Http\Controllers\ContactController::class, 'index'])->name('contacts');

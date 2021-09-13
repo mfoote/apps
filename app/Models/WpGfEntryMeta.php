@@ -9,5 +9,5 @@ class WpGfEntryMeta extends Model
 {
     use HasFactory;
     protected $table = 'wp_gf_entry_meta';
-    protected $connection = 'remote';
+    protected $connection = 'sca';
 }

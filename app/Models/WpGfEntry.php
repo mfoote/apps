@@ -10,11 +10,17 @@ class WpGfEntry extends Model
     use HasFactory;
 
     protected $table = 'wp_gf_entry';
-    protected $connection = 'remote';
+    protected $connection = 'sca';
+    protected $fillable = ['is_fulfilled', 'status', 'transaction_id'];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
+    const CREATED_AT = 'date_created';
+    const UPDATED_AT = 'date_updated';
+
+    public function form()
+    {
+        return $this->hasOne(WpGfForm::class, 'id', 'form_id');
+    }
+
     public function form_entry_meta()
     {
         return $this->hasMany(WpGfEntryMeta::class, 'entry_id', 'id');
