@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use App\Models\WpGfEntry;
 use App\Models\WpGfForm;
 use Illuminate\Http\Request;
@@ -87,6 +88,63 @@ class WebFormController extends Controller
         $entry = WpGfEntry::find($request->input('id'));
         if (null !== $entry && $entry->is_fulfilled !== 'trash') {
             $entry->update($arr);
+        }
+        return redirect()->back();
+    }
+
+    public function convert(Request $request)
+    {
+        $entry = json_decode($request->input('entry'), true);
+        $creatArr = [
+            'created_user_id' => Auth::user()->id,
+            'updated_user_id' => Auth::user()->id,
+            'status' => 'Web Conversion',
+            'first_name' => (array_key_exists('first_name', $entry) && strlen(trim($entry['first_name']))) ? trim($entry['first_name']) : null,
+            'last_name' => (array_key_exists('last_name', $entry) && strlen(trim($entry['last_name']))) ? trim($entry['last_name']) : null,
+            'form_id' => (array_key_exists('form_id', $entry) && strlen(trim($entry['form_id']))) ? trim($entry['form_id']) : null,
+            'form_name' => (array_key_exists('form_name', $entry) && strlen(trim($entry['form_name']))) ? trim($entry['form_name']) : null,
+            'website' => (array_key_exists('site', $entry) && strlen(trim($entry['site']))) ? trim($entry['site']) : null,
+            'external_id' => $request->input('id'),
+            'external_id_type' => 'Web Form',
+            'conversion_type' => 'Web Form',
+            'initial_comment' => (array_key_exists('comments', $entry) && strlen(trim($entry['comments']))) ? trim($entry['comments']) : null,
+            'web_postal_code' => (array_key_exists('postal_code', $entry) && strlen(trim($entry['postal_code'])) == 5) ? trim($entry['postal_code']) : null,
+            'created_at' => date('Y-m-d H:i:s', strtotime($entry['created_at'])),
+        ];
+
+        if (array_key_exists('phone_number', $entry) && strlen(preg_replace('/[^0-9]/', '', $entry['phone_number'])) === 10) {
+            $creatArr['contact_phone_numbers'] = ['phone_number' => preg_replace('/[^0-9]/', '', $entry['phone_number']), 'is_primary' => true];
+        }
+
+        if (array_key_exists('email_address', $entry) && filter_var($entry['email_address'], FILTER_VALIDATE_EMAIL)) {
+            $creatArr['contact_email_addresses'] = ['email_address' => trim($entry['email_address']), 'is_primary' => true];
+        }
+
+        try {
+            $eType = 'Error';
+            $eClass = 'alert-danger';
+            if (null === Contact::where('form_id', $creatArr['form_id'])->where('website', $creatArr['website'])->where('external_id', $creatArr['external_id'])->first()) {
+                $contact = Contact::create($creatArr);
+                if (array_key_exists('contact_phone_numbers', $creatArr)) {
+                    $contact->phone_numbers()->create($creatArr['contact_phone_numbers']);
+                }
+                if (array_key_exists('contact_email_addresses', $creatArr)) {
+                    $contact->email_addresses()->create($creatArr['contact_email_addresses']);
+                }
+                if($creatArr['website'] === 'spinecenteratlanta.com'){
+                    $arr = ['is_fulfilled' => '1', 'status' => 'converted', 'transaction_id' => Auth::user()->id];
+                    $entry = WpGfEntry::find($request->input('id'));
+                    if (null !== $entry && $entry->is_fulfilled !== 'trash') {
+                        $entry->update($arr);
+                    }
+                }
+            } else {
+                $eType = 'Notice';
+                $eClass = 'alert-info';
+                throw new \Exception('Another user already converted this form, screen has been reloaded.');
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['msg' => $e->getMessage(), 'class' => $eClass, 'type' => $eType]);
         }
         return redirect()->back();
     }

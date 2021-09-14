@@ -11,6 +11,14 @@
                                 {{ session('status') }}
                             </div>
                         @endif
+                        @if($errors->any())
+                            <div class="alert {{$errors->first('class')}} alert-dismissible fade show" role="alert">
+                                <strong>{{$errors->first('type')}}!</strong> {{$errors->first('msg')}}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
                         <table class="table table-striped table-hover">
                             <thead>
                             <th>Site</th>
@@ -117,6 +125,9 @@
                 var html = jQuery(this).closest('td').find('div.comment-wrapper').html();
                 jQuery('#commentsModal .modal-body').html(html);
                 jQuery('#commentsModal').modal('show');
+            });
+            jQuery('.convert').on('click', function () {
+                jQuery(this).closest('td').find('form').attr('action', '/web_forms/convert').submit();
             });
             jQuery('#commentsModal').modal({
                 keyboard: false,

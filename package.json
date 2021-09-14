@@ -22,6 +22,8 @@
         "sass-loader": "^11.0.1"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.15.4"
+        "@fortawesome/fontawesome-free": "^5.15.4",
+        "jquery-mask-plugin": "^1.14.16",
+        "js-cookie": "^3.0.1"
     }
 }

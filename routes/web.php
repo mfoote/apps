@@ -31,3 +31,4 @@ Route::post('/web_calls/convert', [App\Http\Controllers\WebCallController::class
 Route::get('/reports', [App\Http\Controllers\ReportController::class, 'index'])->name('reports');
 
 Route::get('/contacts', [App\Http\Controllers\ContactController::class, 'index'])->name('contacts');
+Route::post('/contacts/lookup', [App\Http\Controllers\ContactController::class, 'lookup'])->name('contacts.lookup');
