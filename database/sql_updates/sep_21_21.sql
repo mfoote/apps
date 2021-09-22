@@ -1,0 +1,17 @@
+ALTER TABLE `contact_notes` CHANGE `status` `category` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Note' AFTER `contact_id`;
+ALTER TABLE `contact_notes` CHANGE `user_id` `user_id` BIGINT(20) NOT NULL AFTER `contact_id`, CHANGE `updated_user_id` `updated_user_id` BIGINT(20) NULL DEFAULT NULL AFTER `contact_id`;
+ALTER TABLE `contact_notes` CHANGE `user_id` `user_id` BIGINT(20) NOT NULL AFTER `contact_id`;
+ALTER TABLE `contact_notes` ADD `follow_up_done` TINYINT(1) NOT NULL DEFAULT '0' AFTER `follow_up_on`, ADD INDEX (`follow_up_done`);
+ALTER TABLE `options` ADD `is_unique` TINYINT(1) NOT NULL DEFAULT '0' AFTER `value`, ADD INDEX (`is_unique`);
+UPDATE `options` SET `created_at` = NULL, `updated_at` = NULL WHERE `options`.`id` = 1;
+UPDATE `options` SET `is_unique` = '1', `created_at` = NULL, `updated_at` = NULL WHERE `options`.`id` = 2;
+UPDATE `options` SET `is_unique` = '1', `created_at` = NULL, `updated_at` = NULL WHERE `options`.`id` = 3;
+UPDATE `options` SET `is_unique` = '1', `created_at` = NULL, `updated_at` = NULL WHERE `options`.`id` = 4;
+UPDATE `options` SET `created_at` = NULL, `updated_at` = NULL WHERE `options`.`id` = 5;
+UPDATE `options` SET `is_unique` = '1', `created_at` = NULL, `updated_at` = NULL WHERE `options`.`id` = 6;
+UPDATE `options` SET `created_at` = NULL, `updated_at` = NULL WHERE `options`.`id` = 7;
+UPDATE `options` SET `is_unique` = '1', `created_at` = NULL, `updated_at` = NULL WHERE `options`.`id` = 8;
+UPDATE `options` SET `created_at` = NULL, `updated_at` = NULL WHERE `options`.`id` = 9;
+UPDATE `options` SET `created_at` = NULL, `updated_at` = NULL WHERE `options`.`id` = 10;
+UPDATE `options` SET `created_at` = NOW();
+UPDATE `options` SET `updated_at` = NOW();

@@ -16,27 +16,11 @@ class Contact extends Model
     ];
 
     /**
-     * @return Model|\Illuminate\Database\Eloquent\Relations\HasMany|object|null
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function primary_address()
     {
-        return $this->hasMany(ContactAddress::class, 'contact_id', 'id')->where('is_primary', 1)->take(1);
-    }
-
-    /**
-     * @return Model|\Illuminate\Database\Eloquent\Relations\HasMany|object|null
-     */
-    public function primary_phone_number()
-    {
-        return $this->hasMany(ContactPhoneNumber::class, 'contact_id', 'id')->where('is_primary', 1)->take(1);
-    }
-
-    /**
-     * @return Model|\Illuminate\Database\Eloquent\Relations\HasMany|object|null
-     */
-    public function primary_email_address()
-    {
-        return $this->hasMany(ContactEmailAddress::class, 'contact_id', 'id')->where('is_primary', 1)->take(1);
+        return $this->hasOne(ContactAddress::class, 'contact_id', 'id')->where('is_primary', 1);
     }
 
     /**
@@ -45,6 +29,30 @@ class Contact extends Model
     public function addresses()
     {
         return $this->hasMany(ContactAddress::class, 'contact_id', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function primary_email_address()
+    {
+        return $this->hasOne(ContactEmailAddress::class, 'contact_id', 'id')->where('is_primary', 1);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function email_addresses()
+    {
+        return $this->hasMany(ContactEmailAddress::class, 'contact_id', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function primary_phone_number()
+    {
+        return $this->hasOne(ContactPhoneNumber::class, 'contact_id', 'id')->where('is_primary', 1);
     }
 
     /**
@@ -58,8 +66,24 @@ class Contact extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function email_addresses()
+    public function notes()
     {
-        return $this->hasMany(ContactEmailAddress::class, 'contact_id', 'id');
+        return $this->hasMany(ContactNote::class, 'contact_id', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function current_status()
+    {
+        return $this->hasOne(ContactStatus::class, 'contact_id', 'id')->latest();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function statuses()
+    {
+        return $this->hasMany(ContactStatus::class, 'contact_id', 'id')->orderby('created_at', 'DESC');
     }
 }

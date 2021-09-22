@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container hide">
+    <div class="container d-none">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
@@ -21,6 +21,9 @@
                                     <button type="button" class="btn btn-success" data-type="chart">Chart</button>
                                     <button type="button" class="btn btn-success" data-type="phone">Phone</button>
                                 </div>
+                                <div class="btn-group btn-group-sm mr-2" role="group" aria-label="group 1">
+                                    <a href="/contacts/list" target="_self" class="btn btn-primary list">View List</a>
+                                </div>
                             </div>
                         </div>
                         <form>
@@ -30,11 +33,11 @@
                                     <div class="form-row">
                                         <div class="col-sm-12 col-md-4 col-lg-3 criteria chart d-none">
                                             <input type="text" name="chart" class="form-control">
-                                            <small class="text-muted">Enter Chart Number</small>
+                                            <small class="text-muted">Enter Chart Number then TAB</small>
                                         </div>
                                         <div class="col-sm-12 col-md-4 col-lg-3 criteria name d-none">
                                             <input type="text" name="name" class="form-control">
-                                            <small class="text-muted">Enter Last,First Name</small>
+                                            <small class="text-muted">Enter Last,First Name then TAB</small>
                                         </div>
                                         <div class="col-sm-12 col-md-4 col-lg-3 criteria phone d-none">
                                             <input type="text" name="phone" class="form-control">
@@ -84,6 +87,7 @@
                 Cookies.set('contact_criteria', contact_criteria)
             }
             jQuery('.crit-btn button').on('click', function (e) {
+                jQuery('.container .result').html('')
                 jQuery('.crit-btn button').removeClass('active');
                 var contact_criteria = jQuery(this).data('type');
                 Cookies.set('contact_criteria', contact_criteria);
@@ -103,16 +107,16 @@
                     doContactLookup(field);
                 }
             });
-            jQuery('.criteria.chart').find('input').mask('0000000', {
-                placeholder: "_______",
-                clearIfNotMatch: true,
-                onComplete: function (cep, event, currentField) {
-                    doContactLookup(currentField.attr('name'));
+            jQuery('.criteria.chart').find('input').on('blur', function () {
+                if (jQuery(this).val().length) {
+                    doContactLookup(jQuery(this).attr('name'));
                 }
             });
             jQuery('.criteria.name').find('input').on('blur', function () {
-                doContactLookup(jQuery(this).attr('name'));
-            })
+                if (jQuery(this).val().length) {
+                    doContactLookup(jQuery(this).attr('name'));
+                }
+            });
             jQuery('.criteria.phone').find('input').mask('(000) 000-0000', {
                 placeholder: "(___) ___-____",
                 clearIfNotMatch: true,

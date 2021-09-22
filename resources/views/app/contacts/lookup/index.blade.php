@@ -6,46 +6,70 @@
         <th>Birthday</th>
         <th>Address</th>
         <th>Phone</th>
-        <th>Email</th>
+        <th colspan="2">Email</th>
     </tr>
     </thead>
     <tbody>
-    @if($contacts->count())
-        @foreach($contacts as $contact)
-            <tr>
-                <td>
-                    @if(null !== $contact->chart_number)
-                        {{$contact->chart_number}}
-                    @else
-                        Unlinked
-                    @endif
-                </td>
-                <td>
-                    {{$contact->last_name}}, {{$contact->first_name}}
-                </td>
-                <td>{{$contact->date_of_birth}}</td>
-                <td>
-                    @if($contact->primary_address->count())
+    @if(!$nameError)
+        @if($contacts->count())
+            @foreach($contacts as $contact)
+                <tr>
+                    <td>
+                        @if(null !== $contact->chart_number)
+                            {{$contact->chart_number}}
+                        @else
+                            Unlinked
+                        @endif
+                    </td>
+                    <td>
+                        {{$contact->last_name}}, {{$contact->first_name}}
+                    </td>
+                    <td>{{$contact->date_of_birth}}</td>
+                    <td>
+                        @if(null !== $contact->primary_address)
 
-                    @endif
-                </td>
-                <td>
-                    @if($contact->primary_phone_number->count())
-                        {{$contact->primary_phone_number[0]->phone_number}}
-                    @endif
-                </td>
-                <td>
-                    @if($contact->primary_email_address->count())
-                        {{$contact->primary_email_address[0]->email_address}}
-                    @endif
+                        @endif
+                    </td>
+                    <td>
+                        @if(null !== $contact->primary_phone_number)
+                            {{$contact->primary_phone_number->phone_number}}
+                        @endif
+                    </td>
+                    <td>
+                        @if(null !== $contact->primary_email_address)
+                            {{$contact->primary_email_address->email_address}}
+                        @endif
+                    </td>
+                    <td align="right">
+                        <a href="/contacts/edit/{{$contact->id}}" class="btn btn-sm btn-primary">
+                            <i class="fas fa-door-open"></i>
+                        </a>
+                    </td>
+                </tr>
+            @endforeach
+        @else
+            <tr>
+                <td colspan="6">
+                    <div class="alert alert-warning m-0">
+                        No Contacts found for entered criteria.
+                    </div>
                 </td>
             </tr>
-        @endforeach
+        @endif
     @else
         <tr>
             <td colspan="6">
                 <div class="alert alert-warning m-0">
-                    No Contacts found for entered criteria.
+                    Named search must be Last Name,<span class="text-danger">&lt;comma&gt;</span> First Name, partial names are ok, but comma must be included.
+                    <ul>
+                        <li>Example, for Jane Doe, the following will work...</li>
+                        <ul>
+                            <li>doe, jane or doe,jane</li>
+                            <li>do, j or do,j</li>
+                            <li>d, j or d,j</li>
+                            <li>d,</li>
+                        </ul>
+                    </ul>
                 </div>
             </td>
         </tr>

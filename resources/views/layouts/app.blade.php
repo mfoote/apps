@@ -21,7 +21,7 @@
 <body>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container">
+        <div class="container d-none">
             <a class="navbar-brand" href="{{ url('/launch') }}">
                 <i class="fas fa-rocket fa-2x text-info"></i> <strong style="font-size: 150%"><span class="text-danger">Launch</span><span
                         class="text-info">Pad</span></strong>

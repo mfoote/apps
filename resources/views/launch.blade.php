@@ -82,4 +82,9 @@
             </div>
         </div>
     </div>
+    <script>
+        jQuery(function () {
+            jQuery('.container').removeClass('d-none');
+        });
+    </script>
 @endsection

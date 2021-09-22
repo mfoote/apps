@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
+    <div class="container d-none">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
@@ -78,12 +78,14 @@
                                                 <i class="far fa-comment"></i>
                                             </button>
                                         @endif
-                                        <button class="btn btn-sm btn-success convert">
-                                            <i class="far fa-id-card"></i>
-                                        </button>
-                                        <button class="btn btn-sm btn-danger ml-2 trash">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
+                                        @if(env('APP_ENV') !== 'local')
+                                            <button class="btn btn-sm btn-success convert">
+                                                <i class="far fa-id-card"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger ml-2 trash">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
@@ -135,9 +137,7 @@
             }).on('hidden.bs.modal', function () {
                 jQuery('#commentsModal .modal-body').html('');
             });
+            jQuery('.container').removeClass('d-none');
         });
     </script>
-    {{--    <pre>--}}
-    {{--        {{print_r($entries)}}--}}
-    {{--    </pre>--}}
 @endsection

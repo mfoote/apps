@@ -32,3 +32,10 @@ Route::get('/reports', [App\Http\Controllers\ReportController::class, 'index'])-
 
 Route::get('/contacts', [App\Http\Controllers\ContactController::class, 'index'])->name('contacts');
 Route::post('/contacts/lookup', [App\Http\Controllers\ContactController::class, 'lookup'])->name('contacts.lookup');
+Route::get('/contacts/list', [App\Http\Controllers\ContactController::class, 'listIndex'])->name('contacts.list');
+Route::get('/contacts/list/{letter}', [App\Http\Controllers\ContactController::class, 'listResult'])->name('contacts.list.result');
+Route::get('/contacts/edit/{id}', [App\Http\Controllers\ContactController::class, 'edit'])->name('contacts.edit');
+Route::post('/contacts/update/{id}', [App\Http\Controllers\ContactController::class, 'update'])->name('contacts.update');
+Route::post('/contacts/store/status', [App\Http\Controllers\ContactController::class, 'storeStatus'])->name('contacts.store.status');
+Route::post('/contacts/store/note', [App\Http\Controllers\ContactController::class, 'storeNote'])->name('contacts.store.note');
+Route::get('/contacts/note/close/fu/{id}', [App\Http\Controllers\ContactController::class, 'closeFollowUp'])->name('contacts.close.fu');
