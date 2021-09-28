@@ -80,7 +80,7 @@
         }
 
         jQuery(function () {
-            jQuery('.navbar-brand').html('<i class="fas fa-long-arrow-alt-left"></i> <i class="fas fa-rocket"></i>');
+            jQuery('.navbar-brand').html('<i class="fas fa-long-arrow-alt-left"></i> <i class="fas fa-dot-circle"></i>');
             var contact_criteria = Cookies.get('contact_criteria');
             if (contact_criteria === undefined) {
                 contact_criteria = 'chart';

@@ -42,6 +42,12 @@
                                        class="form-control form-control-sm date"
                                        style="width:100px" value="{{$contact->date_of_birth}}">
                             </div>
+                            <div class="form-group">
+                                <label for="limit">LOP Threshold</label>
+                                <input type="text" id="limit" name="limit"
+                                       class="form-control form-control-sm date"
+                                       style="width:100px" value="{{$contact->lop_threshold}}">
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -129,7 +135,8 @@
                                        class="form-control form-control-sm date"
                                        style="width: 100px" value="">
                                 <label for="note" class="mt-2 mb-0">Note</label>
-                                <textarea name="note" class="form-control mt-2" cols="10" rows="5" maxlength="500"></textarea>
+                                <textarea name="note" class="form-control mt-2" cols="10" rows="5"
+                                          maxlength="500"></textarea>
                             </div>
                         </form>
                     </div>
@@ -141,29 +148,39 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="ConfigPhoneModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="AddNoteModalTitle">Manage Phone Numbers</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col">
-                            <form action="/contacts/store/note" method="post">
-                                {{csrf_field()}}
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-success submit-form">Add Note</button>
-                </div>
+</div>
+<div class="modal fade" id="LinkEmrModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="LinkEmrModalTitle">Link EMR</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
             </div>
         </div>
+    </div>
+</div>
+<div class="modal fade" id="ErrorModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header alert-danger">
+                <h5 class="modal-title" id="ErrorModalTitle">Error</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger msg"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
 </div>

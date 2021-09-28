@@ -6,7 +6,7 @@
         <th>Birthday</th>
         <th>Address</th>
         <th>Phone</th>
-        <th>Email</th>
+        <th colspan="2">Email</th>
     </tr>
     </thead>
     <tbody>
@@ -39,6 +39,11 @@
                     @if(null !== $contact->primary_email_address)
                         {{$contact->primary_email_address->email_address}}
                     @endif
+                </td>
+                <td align="right">
+                    <a href="/contacts/edit/{{$contact->id}}" class="btn btn-sm btn-primary">
+                        <i class="fas fa-door-open"></i>
+                    </a>
                 </td>
             </tr>
         @endforeach

@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+    <pre>
+        {{print_r($errors->all())}}
+    </pre>
     <style>
         span .copy, i.configure, i.manage {
             color: #38c172 !important;
@@ -26,7 +29,8 @@
                                     <span class="text-primary">{{$contact->chart_number}}</span>
                                 @else
                                     <span class="text-danger">Not Linked</span>
-                                <span><i class="fas fa-link manage" title="Link to EMR"></i></span>
+                                    <span><i class="fas fa-link manage" title="Link to EMR" data-toggle="modal"
+                                             data-target="#LinkEmrModal"></i></span>
                                 @endif
                             </span>
                         </h4>
@@ -92,19 +96,28 @@
                                                         <th>Date of Birth</th>
                                                         <td class="pl-3">
                                                             @if(null !== $contact->date_of_birth)
-                                                                {{date('m/d/Y', strtotime($contact->date_of_birth))}}
-                                                                <span class="text-muted" style="font-size: 70%">
-                                                                    ({{$contact->primary_email_address->email_address_type}})
-                                                                </span>
+                                                                {{$contact->date_of_birth->format('m/d/y')}}
+                                                                <small class="text-primary">
+                                                                    ({{$contact->getAge()}})
+                                                                </small>
                                                             @else
                                                                 <span class="text-danger">Not Entered</span>
                                                             @endif
-                                                            {{$contact->date_of_birth}}
+                                                        </td>
+                                                    <tr>
+                                                    <tr>
+                                                        <th>LOP Threshold</th>
+                                                        <td class="pl-3">
+                                                            @if(null !== $contact->lop_threshold)
+                                                            @else
+                                                                <span class="text-danger">Not Entered</span>
+                                                            @endif
                                                         </td>
                                                     <tr>
                                                         <th>
                                                             Primary Phone
-                                                            <i class="fas fa-cog manage" title="Manage Phone Numbers"></i>
+                                                            <i class="fas fa-cog manage"
+                                                               title="Manage Phone Numbers"></i>
                                                         </th>
                                                         <td class="pl-3">
                                                             @if(null !== $contact->primary_phone_number)
@@ -112,7 +125,8 @@
                                                                     <span>
                                                                         {{$contact->primary_phone_number->phone_number}}
                                                                     </span>
-                                                                    <i class="far fa-copy copy" title="Copy to clipboard"></i>
+                                                                    <i class="far fa-copy copy"
+                                                                       title="Copy to clipboard"></i>
                                                                 </span>
                                                                 <span class="text-muted" style="font-size: 70%">({{$contact->primary_phone_number->phone_number_type}})</span>
                                                             @else
@@ -123,7 +137,8 @@
                                                     <tr>
                                                         <th>
                                                             Primary Email
-                                                            <i class="fas fa-cog manage" title="Manage Email Addresses"></i>
+                                                            <i class="fas fa-cog manage"
+                                                               title="Manage Email Addresses"></i>
                                                         </th>
                                                         <td class="pl-3">
                                                             @if(null !== $contact->primary_email_address)
@@ -131,7 +146,8 @@
                                                                     <span>
                                                                         {{$contact->primary_email_address->email_address}}
                                                                     </span>
-                                                                    <i class="far fa-copy copy" title="Copy to clipboard"></i>
+                                                                    <i class="far fa-copy copy"
+                                                                       title="Copy to clipboard"></i>
                                                                 </span>
                                                                 <span class="text-muted" style="font-size: 70%">({{$contact->primary_email_address->email_address_type}})</span>
                                                             @else
@@ -297,7 +313,8 @@
                                                 @else
                                                     <div class="alert alert-info m-0">
                                                         Note notes available for this account,
-                                                        <a href="#" class="new-note">create one</a>?
+                                                        <a href="#" class="new-note" data-toggle="modal"
+                                                           data-target="#AddNoteModal">create one</a>?
                                                     </div>
                                                 @endif
                                             </div>
@@ -310,7 +327,7 @@
                                             </div>
                                             <div class="card-body overflow-auto">
                                                 @if(strlen(trim($contact->initial_comment)))
-                                                    {{nl2br(trim($contact->initial_comment))}}
+                                                    {!! nl2br(trim($contact->initial_comment)) !!}
                                                 @else
                                                     <div class="alert alert-info m-0">
                                                         No contact comments.
@@ -327,6 +344,7 @@
             </div>
         </div>
         @include('app.contacts.edit.modals')
+
     </div>
     <script>
         function loadPageFull() {
@@ -341,7 +359,21 @@
                 placeholder: "__/__/____",
                 clearIfNotMatch: true
             });
-
+            jQuery('#LinkEmrModal').modal({
+                keyboard: false,
+                show: false
+            }).on('show.bs.modal', function () {
+                jQuery.ajax('/emr/lookup/form/{{$contact->id}}', {
+                    method: 'get',
+                    success: function (response) {
+                        jQuery('#LinkEmrModal .modal-body').html(response);
+                    }
+                });
+            }).on('hidden.bs.modal', function () {
+                jQuery('#LinkEmrModal .modal-body').html('');
+                jQuery('.container, .container-fluid').addClass('d-none');
+                loadPageFull();
+            });
             jQuery('#EditContactModal').modal({
                 keyboard: false,
                 show: false
@@ -363,6 +395,12 @@
                 jQuery('.container, .container-fluid').addClass('d-none');
                 loadPageFull()
             });
+            jQuery('#ErrorModal').modal({
+                keyboard: false,
+                show: false
+            }).on('hidden.bs.modal', function () {
+                jQuery('#ErrorModal .msg').html('');
+            });
             jQuery('.add-status').on('click', function (e) {
                 e.preventDefault();
                 if (jQuery(this).closest('.modal-content').find('form select[name="status_id"]').val() == "") {
@@ -378,4 +416,12 @@
             jQuery('span .copy, i.configure, .ttip, i.manage').tooltip()
         });
     </script>
+    @if($errors->any())
+        <script>
+            jQuery(function () {
+                jQuery('#ErrorModal .msg').html('{{$errors->first()}}');
+                jQuery('#ErrorModal').modal('show');
+            });
+        </script>
+    @endif
 @endsection

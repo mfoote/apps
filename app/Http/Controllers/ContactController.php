@@ -165,4 +165,36 @@ class ContactController extends Controller
         ContactNote::create($arr);
         return redirect()->back();
     }
+
+    public function linkEmr(Request $request, $id)
+    {
+        try {
+            $idIsLinked = Contact::where('emr_id', $request->input('emr_id'))->first();
+            if ($idIsLinked) {
+                throw new \Exception('Selected patient is already linked to account ' . $idIsLinked->id . ' - ' . $idIsLinked->last_name . ', ' . $idIsLinked->first_name);
+            }
+            $arr = [
+                'emr_id' => $request->input('emr_id'),
+                'emr_name' => $request->input('emr_name'),
+                'chart_number' => $request->input('chart_number')
+            ];
+            $contact = Contact::find($id);
+            $contact->update($arr);
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['msg' => $e->getMessage()]);
+        }
+        return redirect()->back();
+    }
+
+    public function breakEmrLink($id)
+    {
+        $arr = [
+            'emr_id' => null,
+            'emr_name' => null,
+            'chart_number' => null
+        ];
+        $contact = Contact::find($id);
+        $contact->update($arr);
+        return redirect()->back();
+    }
 }

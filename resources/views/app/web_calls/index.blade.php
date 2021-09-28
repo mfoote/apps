@@ -18,7 +18,7 @@
     </div>
     <script>
         jQuery(function () {
-            jQuery('.navbar-brand').html('<i class="fas fa-long-arrow-alt-left"></i> <i class="fas fa-rocket"></i>')
+            jQuery('.navbar-brand').html('<i class="fas fa-long-arrow-alt-left"></i> <i class="fas fa-dot-circle"></i>');
         });
     </script>
     {{--    <pre>--}}

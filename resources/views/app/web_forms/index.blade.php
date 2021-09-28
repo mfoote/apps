@@ -115,7 +115,7 @@
     </div>
     <script>
         jQuery(function () {
-            jQuery('.navbar-brand').html('<i class="fas fa-long-arrow-alt-left"></i> <i class="fas fa-rocket"></i>')
+            jQuery('.navbar-brand').html('<i class="fas fa-long-arrow-alt-left"></i> <i class="fas fa-dot-circle"></i>')
             jQuery('.trash').on('click', function () {
                 if (confirm('are you sure?')) {
                     jQuery(this).closest('td').find('form').attr('action', '/web_forms/trash').submit()
