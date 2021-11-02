@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 
 class Contact extends Model
 {
     use HasFactory;
-
+    use SoftDeletes;
     protected $fillable = [
         'status', 'chart_number', 'emr_id', 'emr_name', 'emr_id', 'external_id', 'external_id_type', 'form_id',
         'form_name', 'website', 'conversion_type', 'converted_call', 'ip_address', 'first_name', 'middle_initial',

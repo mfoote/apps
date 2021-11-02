@@ -16,9 +16,9 @@
                 <td>
                     {{$contact->id}} -
                     @if(null !== $contact->chart_number)
-                        {{$contact->chart_number}}
+                        <span class="text-success">{{$contact->chart_number}}</span>
                     @else
-                        Unlinked
+                        <span class="text-danger">Unlinked</span>
                     @endif
                 </td>
                 <td>
@@ -44,6 +44,14 @@
                     <a href="/contacts/edit/{{$contact->id}}" class="btn btn-sm btn-primary">
                         <i class="fas fa-door-open"></i>
                     </a>
+                    @if(null === $contact->chart_number)
+                        <form action="/contacts/trash/{{$contact->id}}" method="post" class="d-none">
+                            {{csrf_field()}}
+                        </form>
+                        <a href="#" class="btn btn-sm btn-danger trash ml-2">
+                            <i class="far fa-trash-alt"></i>
+                        </a>
+                    @endif
                 </td>
             </tr>
         @endforeach
@@ -58,3 +66,13 @@
     @endif
     </tbody>
 </table>
+<script type="text/javascript">
+    jQuery(function () {
+        jQuery('.trash').on('click', function (e) {
+            e.preventDefault();
+            if (confirm('Are you sure?')) {
+                jQuery(this).parent().find('form').submit();
+            }
+        })
+    });
+</script>

@@ -23,6 +23,16 @@ class ContactController extends Controller
         return redirect()->back();
     }
 
+    public function trash(Request $request, $id)
+    {
+        $request->merge(['updated_user_id' => Auth::user()->id]);
+        $record = Contact::find($id);
+        if(null !== $record){
+            $record->delete();
+        }
+        return redirect()->back();
+    }
+
     public function lookup(Request $request)
     {
         $nameError = false;

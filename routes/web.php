@@ -32,6 +32,7 @@ Route::get('/reports', [App\Http\Controllers\ReportController::class, 'index'])-
 
 Route::get('/contacts', [App\Http\Controllers\ContactController::class, 'index'])->name('contacts')->middleware('auth');
 Route::post('/contacts/lookup', [App\Http\Controllers\ContactController::class, 'lookup'])->name('contacts.lookup')->middleware('auth');
+Route::post('/contacts/trash/{id}', [App\Http\Controllers\ContactController::class, 'trash'])->name('contacts.trash')->middleware('auth');
 Route::get('/contacts/list', [App\Http\Controllers\ContactController::class, 'listIndex'])->name('contacts.list')->middleware('auth');
 Route::get('/contacts/list/{letter}', [App\Http\Controllers\ContactController::class, 'listResult'])->name('contacts.list.result')->middleware('auth');
 Route::get('/contacts/edit/{id}', [App\Http\Controllers\ContactController::class, 'edit'])->name('contacts.edit')->middleware('auth');

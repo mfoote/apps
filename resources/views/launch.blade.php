@@ -50,6 +50,9 @@
                                 <div class="card-header bg-default">
                                     <i class="far fa-id-card"></i>
                                     Contacts
+                                    <a title="Go - Contact List" href="/contacts/list" data-toggle="tooltip" class="btn-sm float-right">
+                                        <i class="far fa-list-alt"></i>
+                                    </a>
                                 </div>
                                 <div class="card-body">
                                     <p class="card-text">Manage converted Web Forms and Calls.</p>
@@ -85,6 +88,7 @@
     <script>
         jQuery(function () {
             jQuery('.container').removeClass('d-none');
+            jQuery('[data-toggle="tooltip"]').tooltip();
         });
     </script>
 @endsection
