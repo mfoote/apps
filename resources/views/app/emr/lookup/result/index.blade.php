@@ -14,11 +14,23 @@
                     @foreach($data['data']['patients'] as $patient)
                         <tr>
                             <td>{{$patient['chart_number']}}</td>
-                            <td>{{$patient['name']}}</td>
+                            <td>
+                                {{$patient['name']}}
+                                @if(count($patient['phones']))
+                                    @foreach($patient['phones'] as $phone)
+                                        <br>
+                                        <small class="text-muted">{{$phone['phone_number']}}</small>
+                                    @endforeach
+                                @endif
+                                @if(null !== $patient['email'])
+                                    <br>
+                                    <small class="text-muted">{{$patient['email']}}</small>
+                                @endif
+                            </td>
                             <td>{{$patient['gender']}}</td>
                             <td>
                                 @if(strlen($patient['dob']))
-                                    {{date('m/d/y', strtotime($patient['dob']))}}
+                                    {{date('m/d/Y', strtotime($patient['dob']))}}
                                 @else
                                     NA
                                 @endif
