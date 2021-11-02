@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    <pre>
-        {{print_r($errors->all())}}
-    </pre>
+    {{--    <pre>--}}
+    {{--        {{print_r($errors->all())}}--}}
+    {{--    </pre>--}}
     <style>
         span .copy, i.configure, i.manage {
             color: #38c172 !important;
@@ -19,20 +19,25 @@
                 <div class="card set-100">
                     <div class="card-header">
                         <h4 class="mb-0">
-                            <span style="font-size: 70%">
-                            <span class="text-success">CID# {{$contact->id}}</span>
-                            </span>
+                            <div class="d-inline-block" style="font-size: 70%">
+                            <div class="text-success d-inline-block">
+                                CID# {{$contact->id}}
+                            </div>
+                            </div>
                             - {{$contact->last_name}}, {{$contact->first_name}} -
-                            <span style="font-size: 70%">
-                            <span class="text-primary">EMR#</span>
-                            @if(null !== $contact->chart_number)
-                                    <span class="text-primary">{{$contact->chart_number}}</span>
+                            <div class="d-inline-block" style="font-size: 70%">
+                            <div class="text-primary d-inline-block">EMR#</div>
+                                @if(null !== $contact->chart_number)
+                                    <div class="text-primary d-inline-block">{{$contact->chart_number}}</div>
                                 @else
-                                    <span class="text-danger">Not Linked</span>
-                                    <span><i class="fas fa-link manage" title="Link to EMR" data-toggle="modal"
-                                             data-target="#LinkEmrModal"></i></span>
+                                    <div class="text-danger d-inline-block">Not Linked</div>
+                                    <div class="d-inline-block">
+                                        <i class="fas fa-link manage" title="Link to EMR" data-toggle="modal"
+                                           data-target="#LinkEmrModal"></i>
+                                    </div>
                                 @endif
-                            </span>
+                            </div>
+                            <div class="text-muted d-inline-block float-right" style="font-size: 60%">Created: {{$contact->created_at->format('m/d/y')}}</div>
                         </h4>
                     </div>
                     <div class="card-body overflow-auto">
