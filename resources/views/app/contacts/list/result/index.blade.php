@@ -14,11 +14,13 @@
         @foreach($contacts as $contact)
             <tr>
                 <td>
-                    {{$contact->id}} -
                     @if(null !== $contact->chart_number)
                         <span class="text-success">{{$contact->chart_number}}</span>
                     @else
                         <span class="text-danger">Unlinked</span>
+                    @endif
+                    @if(null !== $contact->link_attempt_at)
+                        <div class="text-sm text-muted" style="font-size: 60%" data-toggle="tooltip" title="Last EMR check">{{$contact->link_attempt_at->format('m/d g:i a')}} <i class="fas fa-info-circle text-primary"></i></div>
                     @endif
                 </td>
                 <td>
@@ -73,6 +75,7 @@
             if (confirm('Are you sure?')) {
                 jQuery(this).parent().find('form').submit();
             }
-        })
+        });
+        jQuery('[data-toggle="tooltip"]').tooltip();
     });
 </script>
