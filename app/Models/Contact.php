@@ -11,19 +11,22 @@ class Contact extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
     protected $fillable = [
         'status', 'chart_number', 'emr_id', 'emr_name', 'emr_id', 'external_id', 'external_id_type', 'form_id',
         'form_name', 'website', 'conversion_type', 'converted_call', 'ip_address', 'first_name', 'middle_initial',
         'last_name', 'suffix', 'alias', 'date_of_birth', 'web_postal_code', 'initial_comment', 'lop_threshold',
-        'created_user_id', 'updated_user_id'
+        'created_user_id', 'updated_user_id', 'link_attempt_at'
     ];
     protected $casts = [
         'date_of_birth' => 'date:Y-m-d',
     ];
 
+    protected $dates = ['link_attempt_at'];
+
     public function setDateOfBirthAttribute($value)
     {
-        $this->attributes['date_of_birth'] = (strlen($value)===10) ? date('Y-m-d', strtotime($value)) : null;
+        $this->attributes['date_of_birth'] = (strlen($value) === 10) ? date('Y-m-d', strtotime($value)) : null;
     }
 
     public function getAge()

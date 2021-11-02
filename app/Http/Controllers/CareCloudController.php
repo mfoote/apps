@@ -6,6 +6,7 @@ use App\Models\Contact;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\BadResponseException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class CareCloudController extends Controller
@@ -41,6 +42,14 @@ class CareCloudController extends Controller
             $fields['fields']['dob'] = $request->input('dob');
         }
         try {
+            $record = Contact::find($id);
+            if (null !== $record) {
+                $arr = [
+                    'link_attempt_at' => date('Y-m-d H:i:s'),
+                    'updated_user_id' => Auth::user()->id
+                ];
+                $record->update($arr);
+            }
             $tokenResponse = $this->checkLocalToken();
             if (!$tokenResponse['error']) {
                 $this->setRequestHeaders($this->tokenInfo['access_token']);
