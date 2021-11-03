@@ -28,6 +28,7 @@
                             <th colspan="2">Email</th>
                             </thead>
                             <tbody>
+                            @if(count($entries))
                             @foreach($entries as $entry)
                                 <tr class="set-bg">
                                     <td class="">
@@ -89,6 +90,11 @@
                                     </td>
                                 </tr>
                             @endforeach
+                            @else
+                                <tr>
+                                    <td colspan="6">No Web Forms Available</td>
+                                </tr>
+                            @endif
                             </tbody>
                         </table>
                     </div>
